@@ -1,0 +1,5 @@
+%: psi_2"=1/(psi_2-psi_1)^2-1/(2pi-(psi_2-psi_1)^2)
+function zprime=testsphere(t,z)
+zprime=[z(2);z(4)^2*sin(z(1))*cos(z(1))+sign(z(1)-0)*z/(arclength(0,0,z(1),z(3))^3
+
+arclength(0,0,z(1),z(3))

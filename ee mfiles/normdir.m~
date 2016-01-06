@@ -1,0 +1,11 @@
+function normdir=normdir(phi,theta)
+p.phi=phi;
+p.theta=theta;
+[p.x,p.y,p.z]=sph2cart(p.theta,pi/2-p.phi,1);
+dir=cross(cross([0,0,1],[p.x,p.y,p.z]),[p.x,p.y,p.z]);
+dir=dir/norm(dir);
+pnew.x=p.x+dir(1);
+pnew.y=p.y+dir(2);
+pnew.z=p.z+dir(3);
+[thetanew,phinew,rnew]=cart2sph(pnew.x,pnew.y,pnew.z)
+phinew=pi/2-phinew

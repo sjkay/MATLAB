@@ -1,0 +1,24 @@
+%: psi_2"=1/(psi_2-psi_1)^2-1/(2pi-(psi_2-psi_1)^2)
+function zprime=testspheretest(t,z)
+% if (mod(z(1),pi*2)<0) 
+%     mod(z(1),pi*2)=-mod(z(1),pi*2);
+%     mod(z(3),2*pi)=mod(z(3),2*pi)+pi;
+% elseif (mod(z(1),pi*2)>pi) 
+%     mod(z(1),pi*2)=-mod(z(1),pi*2)+pi;
+%     mod(z(3),2*pi)=mod(z(3),2*pi)+pi;
+% end
+% if (mod(z(3),2*pi)<0) 
+%     mod(z(3),2*pi)=mod(z(3),2*pi)+2*pi;
+% elseif (mod(z(3),2*pi)>2*pi) 
+%     mod(z(3),2*pi)=mod(z(3),2*pi)-2*pi;
+% end
+% fixedpoint(p0,t0)
+df=5;
+ff=1;
+p0=pi/3;
+t0=pi/2;
+z(1)=pi-mod(z(1),pi)
+z(3)=mod(z(3),2*pi)
+mag=sqrt((z(1)-p0)^2+(z(3)-t0)^2);
+[deltaphi,deltatheta]=normdir(p0,t0,z(1),z(3))
+zprime=[z(2);z(4)^2*sin(pi-mod(z(1),pi))*cos(pi-mod(z(1),pi))+(ff*sign(pi-mod(z(1),pi)-p0)/abs(mag*(arclength(p0,t0,pi-mod(z(1),pi),mod(z(3),2*pi)))^2)-ff*sign(pi-mod(z(1),pi)-p0)/abs(mag*(2*pi-arclength(p0,t0,pi-mod(z(1),pi),mod(z(3),2*pi)))^2))*deltaphi-df*z(2);z(4);1/sin(pi-mod(z(1),pi))*(-2*cos(pi-mod(z(1),pi))*z(2)*z(4)+(ff*sign(mod(z(3),2*pi)-t0)/abs(mag*(arclength(p0,t0,pi-mod(z(1),pi),mod(z(3),2*pi)))^2)-ff*sign(mod(z(3),2*pi)-t0)/abs(mag*(2*pi-arclength(p0,t0,pi-mod(z(1),pi),mod(z(3),2*pi)))^2))*deltatheta-df*z(4)*sin(pi-mod(z(1),pi)))]

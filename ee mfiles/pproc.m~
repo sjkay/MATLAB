@@ -1,0 +1,7 @@
+z0=[pi/3;0.1;pi/2;0.1];
+tspan=[0 50];
+[t,z]=rkn1210('testspheretest',tspan,z0);
+xcart=sin(z(:,1)).*cos(z(:,3))
+ycart=sin(z(:,1)).*sin(z(:,3))
+zcart=cos(z(:,1))
+plot3(xcart,ycart,zcart)

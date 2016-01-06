@@ -1,0 +1,14 @@
+function [deltaphi,deltatheta]=normdir(p0,t0,phi,theta)
+p.phi=phi;
+p.theta=theta;
+[x0,y0,z0]=sph2cart(t0,pi/2-p0,1);
+[p.x,p.y,p.z]=sph2cart(p.theta,pi/2-p.phi,1);
+dir=cross(cross([x0,y0,z0],[p.x,p.y,p.z]),[p.x,p.y,p.z]);
+dir=dir/norm(dir);
+pnew.x=p.x+dir(1);
+pnew.y=p.y+dir(2);
+pnew.z=p.z+dir(3);
+[thetanew,phinew,rnew]=cart2sph(pnew.x,pnew.y,pnew.z);
+phinew=pi/2-phinew;
+deltaphi=phinew-p.phi;
+deltatheta=thetanew-p.theta;
